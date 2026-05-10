@@ -100,6 +100,7 @@ def blog_post(slug):
 
 
 @app.route("/admin", methods=["GET", "POST"])
+@limiter.exempt
 def admin():
     error = None
     if request.method == "POST":
@@ -109,24 +110,28 @@ def admin():
         if not title or not content:
             error = "Title and content are required."
         else:
+            # Generate slug: attempt English transliteration, fall back to date-based
             slug = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
+            if not slug:
+                slug = datetime.now().strftime("post-%Y%m%d-%H%M%S")
+
+            db = get_db()
             try:
-                db = get_db()
                 db.execute(
                     "INSERT INTO posts (title, slug, content, excerpt) VALUES (?, ?, ?, ?)",
                     (title, slug, content, excerpt or None)
                 )
                 db.commit()
-                return redirect(url_for("blog_post", slug=slug))
-            except Exception:
+            except sqlite3.IntegrityError:
                 slug = f"{slug}-{random.randint(1000, 9999)}"
-                db = get_db()
                 db.execute(
                     "INSERT INTO posts (title, slug, content, excerpt) VALUES (?, ?, ?, ?)",
                     (title, slug, content, excerpt or None)
                 )
                 db.commit()
-                return redirect(url_for("blog_post", slug=slug))
+
+            logger.info("Post created: slug=%s", slug)
+            return redirect(url_for("blog_post", slug=slug))
     return render_template("admin.html", error=error)
 
 
