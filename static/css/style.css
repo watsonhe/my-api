@@ -187,6 +187,12 @@ body::after {
   transform: scaleX(1);
 }
 
+.nav__lang {
+  opacity: 0.55;
+  font-size: 10px !important;
+  letter-spacing: 1px !important;
+}
+
 /* Mobile nav toggle */
 .nav__toggle {
   display: none;
@@ -288,6 +294,125 @@ body::after {
   }
   [data-reveal] { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
+}
+
+/* ============================================================
+   CJK FONT SUPPORT
+   ============================================================ */
+.lang-zh {
+  --font-display: 'Playfair Display', 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
+  --font-body: 'DM Sans', 'Noto Sans SC', 'Source Han Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.lang-zh .hero__title {
+  font-size: clamp(32px, 6vw, 60px);
+  letter-spacing: 2px;
+}
+
+.lang-zh .post-card__title {
+  letter-spacing: 0;
+}
+
+.lang-zh .admin__form input {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   MARKDOWN CONTENT STYLES
+   ============================================================ */
+.single-post__content h1,
+.single-post__content h2,
+.single-post__content h3 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  margin-top: 36px;
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+
+.single-post__content h1 { font-size: 28px; }
+.single-post__content h2 { font-size: 22px; }
+.single-post__content h3 { font-size: 18px; }
+
+.single-post__content p {
+  margin-bottom: 18px;
+}
+
+.single-post__content strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.single-post__content em {
+  color: var(--red-400);
+  font-style: italic;
+}
+
+.single-post__content code {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  background: var(--bg-surface);
+  padding: 2px 6px;
+  border: 1px solid var(--border-subtle);
+}
+
+.single-post__content pre {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 20px 24px;
+  overflow-x: auto;
+  margin: 20px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.single-post__content pre code {
+  background: none;
+  padding: 0;
+  border: none;
+  font-size: 13px;
+}
+
+.single-post__content blockquote {
+  border-left: 2px solid var(--red-600);
+  margin: 20px 0;
+  padding: 8px 0 8px 20px;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.single-post__content ul,
+.single-post__content ol {
+  margin: 16px 0;
+  padding-left: 24px;
+}
+
+.single-post__content li {
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+}
+
+.single-post__content a {
+  color: var(--red-400);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.single-post__content a:hover {
+  color: var(--red-500);
+}
+
+.single-post__content hr {
+  border: none;
+  border-top: 1px solid var(--border-medium);
+  margin: 32px 0;
+}
+
+.single-post__content img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* ============================================================

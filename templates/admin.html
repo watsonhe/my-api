@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Admin — Crimson Studio{% endblock %}
+{% block title %}{{ t('admin_title') }} — {{ t('site_name') }}{% endblock %}
 
 {% block content %}
 <div class="admin">
-  <h1>New Post</h1>
-  <p class="admin__subtitle">Compose in plain text. Newlines become line breaks.</p>
+  <h1>{{ t('admin_title') }}</h1>
+  <p class="admin__subtitle">{{ t('admin_subtitle') }}</p>
 
   {% if error %}
     <div class="admin__error">{{ error }}</div>
@@ -12,24 +12,24 @@
 
   <form method="post" class="admin__form">
     <div>
-      <label for="title">Title</label>
+      <label for="title">{{ t('admin_label_title') }}</label>
       <input type="text" id="title" name="title" required autofocus
              placeholder="The art of slow writing">
     </div>
 
     <div>
-      <label for="excerpt">Excerpt <span>(optional short description)</span></label>
+      <label for="excerpt">{{ t('admin_label_excerpt') }} <span>({{ t('admin_label_excerpt_hint') }})</span></label>
       <textarea id="excerpt" name="excerpt" rows="2"
                 placeholder="A meditation on craft, patience, and why good words take time."></textarea>
     </div>
 
     <div>
-      <label for="content">Content</label>
+      <label for="content">{{ t('admin_label_content') }}</label>
       <textarea id="content" name="content" rows="20" required
-                placeholder="Your words here. Each new line becomes a paragraph."></textarea>
+                placeholder="## Heading&#10;&#10;Your words here. **Bold**, *italic*, and `code` are supported.&#10;&#10;> A blockquote&#10;&#10;- list item&#10;- another"></textarea>
     </div>
 
-    <button type="submit" class="btn">Publish</button>
+    <button type="submit" class="btn">{{ t('admin_btn_publish') }}</button>
   </form>
 </div>
 {% endblock %}

@@ -1,22 +1,23 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="{{ locale }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Crimson Studio{% endblock %}</title>
+  <title>{% block title %}{{ t('site_name') }}{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
+<body class="lang-{{ locale }}">
 
   <nav class="nav">
-    <a href="{{ url_for('home') }}" class="nav__brand">Crimson Studio</a>
+    <a href="{{ url_for('home') }}" class="nav__brand">{{ t('site_name') }}</a>
     <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav__links">
-      <li><a href="{{ url_for('home') }}">Blog</a></li>
-      <li><a href="{{ url_for('daily_brief') }}">Daily Brief</a></li>
-      <li><a href="{{ url_for('admin') }}">Admin</a></li>
+      <li><a href="{{ url_for('home') }}">{{ t('nav_blog') }}</a></li>
+      <li><a href="{{ url_for('daily_brief') }}">{{ t('nav_brief') }}</a></li>
+      <li><a href="{{ url_for('admin') }}">{{ t('nav_admin') }}</a></li>
+      <li><a href="{{ t('lang_toggle_href') }}" class="nav__lang">{{ t('lang_toggle') }}</a></li>
     </ul>
   </nav>
 
@@ -25,8 +26,8 @@
   </main>
 
   <footer class="footer">
-    <span>Crafted with <span class="footer__dot"></span> in {{ current_year }}</span>
-    <span>Crimson Studio</span>
+    <span>{{ t('footer_crafted') }} <span class="footer__dot"></span> {{ current_year }}</span>
+    <span>{{ t('footer_brand') }}</span>
   </footer>
 
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>

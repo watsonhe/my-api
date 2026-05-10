@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block title %}Daily Brief — Crimson Studio{% endblock %}
+{% block title %}{{ t('brief_eyebrow') }} — {{ t('site_name') }}{% endblock %}
 
 {% block content %}
 <div class="daily-brief">
   <header class="daily-brief__header">
-    <p class="section-eyebrow">DAILY BRIEF</p>
-    <h1>Your morning <span class="text-accent">pulse.</span></h1>
+    <p class="section-eyebrow">{{ t('brief_eyebrow') }}</p>
+    <h1>{{ t('brief_title') | safe }}</h1>
     <div class="meta-strip">
       <span>{{ weather.city }}</span>
       <span class="meta-strip__divider">/</span>
@@ -19,33 +19,33 @@
 
     <!-- Weather -->
     <section class="brief-card brief-card--weather">
-      <div class="brief-card__indicator">Weather</div>
+      <div class="brief-card__indicator">{{ t('brief_weather') }}</div>
       <div class="weather-display">
         <div class="weather-temp">{{ weather.temp }}&deg;</div>
         <div class="weather-desc">
           <div>{{ weather.description }}</div>
-          <div class="feels-like">Feels like {{ weather.feels_like }}&deg;C</div>
+          <div class="feels-like">{{ t('brief_feels_like') }} {{ weather.feels_like }}&deg;C</div>
         </div>
       </div>
       <div class="weather-details">
         <div class="weather-stat">
           <div class="value">{{ weather.temp_max }}&deg;</div>
-          <div class="label">High</div>
+          <div class="label">{{ t('brief_high') }}</div>
         </div>
         <div class="weather-stat">
           <div class="value">{{ weather.temp_min }}&deg;</div>
-          <div class="label">Low</div>
+          <div class="label">{{ t('brief_low') }}</div>
         </div>
         <div class="weather-stat">
           <div class="value">{{ weather.humidity }}%</div>
-          <div class="label">Humidity</div>
+          <div class="label">{{ t('brief_humidity') }}</div>
         </div>
       </div>
     </section>
 
     <!-- News -->
     <section class="brief-card brief-card--news">
-      <div class="brief-card__indicator">Headlines</div>
+      <div class="brief-card__indicator">{{ t('brief_headlines') }}</div>
       {% if news %}
         {% for item in news %}
           <a href="{{ item.url }}" target="_blank" class="news-item" rel="noopener">
@@ -57,14 +57,14 @@
         {% endfor %}
       {% else %}
         <div class="empty-state" style="padding: 40px 20px;">
-          <p style="font-size: 14px;">No headlines available right now.</p>
+          <p style="font-size: 14px;">{{ t('brief_empty_news') }}</p>
         </div>
       {% endif %}
     </section>
 
     <!-- Todos -->
     <section class="brief-card brief-card--todos">
-      <div class="brief-card__indicator">Tasks</div>
+      <div class="brief-card__indicator">{{ t('brief_tasks') }}</div>
       {% if todos %}
         {% for t in todos %}
           <div class="todo-item{% if t.done %} done{% endif %}">
@@ -74,7 +74,7 @@
         {% endfor %}
       {% else %}
         <div class="empty-state" style="padding: 40px 20px;">
-          <p style="font-size: 14px;">No tasks yet. Add some to todos.json</p>
+          <p style="font-size: 14px;">{{ t('brief_empty_todos') }}</p>
         </div>
       {% endif %}
     </section>
@@ -84,7 +84,7 @@
   <!-- Send button -->
   <form method="post" action="/send-daily-brief">
     <div class="brief-send">
-      <button type="submit" class="btn">Send to Email &rarr;</button>
+      <button type="submit" class="btn">{{ t('brief_send') }}</button>
     </div>
   </form>
 </div>

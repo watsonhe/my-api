@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block title %}404 — Crimson Studio{% endblock %}
+{% block title %}{{ t('e404_code') }} — {{ t('site_name') }}{% endblock %}
 
 {% block content %}
 <div class="not-found">
-  <div class="not-found__code">404</div>
-  <h1 class="not-found__title">Page not found</h1>
-  <p class="not-found__text">This page does not exist.<br>Perhaps it never did.</p>
-  <a href="{{ url_for('home') }}" class="btn">Return Home &rarr;</a>
+  <div class="not-found__code">{{ t('e404_code') }}</div>
+  <h1 class="not-found__title">{{ t('e404_title') }}</h1>
+  <p class="not-found__text">{{ t('e404_text') | safe }}</p>
+  <a href="{{ url_for('home') }}" class="btn">{{ t('e404_home') }}</a>
 </div>
 {% endblock %}

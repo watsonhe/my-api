@@ -1,19 +1,19 @@
 {% extends "base.html" %}
-{% block title %}Crimson Studio — Home{% endblock %}
+{% block title %}{{ t('site_name') }} — {{ t('nav_blog') }}{% endblock %}
 
 {% block content %}
 <!-- Hero -->
 <section class="hero">
-  <p class="hero__eyebrow">A personal journal</p>
-  <h1 class="hero__title">Thoughts, notes,<br><span class="text-accent">observations.</span></h1>
-  <p class="hero__subtitle">A brutalist editorial space for ideas that deserve room to breathe. No distractions, no algorithms — just words on a dark canvas.</p>
+  <p class="hero__eyebrow">{{ t('hero_eyebrow') }}</p>
+  <h1 class="hero__title">{{ t('hero_title') | safe }}</h1>
+  <p class="hero__subtitle">{{ t('hero_subtitle') }}</p>
   <div class="hero__slash"></div>
 </section>
 
 <!-- About snippet -->
 {% if portfolio.about %}
 <section class="home-about" data-reveal>
-  <p class="home-about__label">About</p>
+  <p class="home-about__label">{{ t('section_about') }}</p>
   <p class="home-about__text">{{ portfolio.about }}</p>
 </section>
 {% endif %}
@@ -21,7 +21,7 @@
 <!-- Projects -->
 {% if portfolio.projects %}
 <section class="home-projects" data-reveal>
-  <p class="home-projects__label">Projects</p>
+  <p class="home-projects__label">{{ t('section_projects') }}</p>
   <div class="project-grid">
     {% for proj in portfolio.projects %}
       <div class="project-card">
@@ -49,26 +49,26 @@
 <!-- Currently -->
 {% if portfolio.currently %}
 <section class="home-currently" data-reveal>
-  <p class="home-currently__label">Currently</p>
+  <p class="home-currently__label">{{ t('section_currently') }}</p>
   <div class="currently-grid">
     {% if portfolio.currently.learning %}
       <div class="currently-item">
         <span class="currently-item__icon">&darr;</span>
-        <span class="currently-item__key">Learning</span>
+        <span class="currently-item__key">{{ t('currently_learning') }}</span>
         <span class="currently-item__value">{{ portfolio.currently.learning }}</span>
       </div>
     {% endif %}
     {% if portfolio.currently.building %}
       <div class="currently-item">
         <span class="currently-item__icon">*</span>
-        <span class="currently-item__key">Building</span>
+        <span class="currently-item__key">{{ t('currently_building') }}</span>
         <span class="currently-item__value">{{ portfolio.currently.building }}</span>
       </div>
     {% endif %}
     {% if portfolio.currently.reading %}
       <div class="currently-item">
         <span class="currently-item__icon">&#182;</span>
-        <span class="currently-item__key">Reading</span>
+        <span class="currently-item__key">{{ t('currently_reading') }}</span>
         <span class="currently-item__value">{{ portfolio.currently.reading }}</span>
       </div>
     {% endif %}
@@ -78,7 +78,7 @@
 
 <!-- Post list -->
 <section class="post-list" data-reveal>
-  <p class="post-list__header">Writings</p>
+  <p class="post-list__header">{{ t('section_writings') }}</p>
 
   {% if posts %}
     {% for post in posts %}
@@ -98,9 +98,9 @@
   {% else %}
     <div class="empty-state">
       <div class="empty-state__mark">&#182;</div>
-      <p>No posts yet. The ink is still drying.</p>
+      <p>{{ t('post_empty') }}</p>
       <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px;">
-        <a href="{{ url_for('admin') }}">Write the first post &rarr;</a>
+        <a href="{{ url_for('admin') }}">{{ t('post_empty_cta') }}</a>
       </p>
     </div>
   {% endif %}
@@ -109,6 +109,6 @@
 <!-- Contact CTA -->
 <section class="home-cta" data-reveal>
   <div class="cta-rule"></div>
-  <p class="cta-text">Got something to say? <a href="mailto:hema1998@163.com" class="cta-link">Get in touch &rarr;</a></p>
+  <p class="cta-text">{{ t('cta_text') }} <a href="mailto:hema1998@163.com" class="cta-link">{{ t('cta_link') }}</a></p>
 </section>
 {% endblock %}

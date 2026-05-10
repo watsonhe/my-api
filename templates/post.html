@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-{% block title %}{{ post.title }} — Crimson Studio{% endblock %}
+{% block title %}{{ post.title }} — {{ t('site_name') }}{% endblock %}
 
 {% block content %}
 <article class="single-post">
-  <a href="{{ url_for('home') }}" class="back-link">&larr; Back to journal</a>
+  <a href="{{ url_for('home') }}" class="back-link">{{ t('post_back') }}</a>
 
   <header class="single-post__header">
     <time>{{ post.created_at[:10] }}</time>
@@ -14,11 +14,11 @@
   </header>
 
   <div class="single-post__content">
-    {{ post.content | replace('\n', '<br>') | safe }}
+    {{ md(post.content) | safe }}
   </div>
 
   <footer class="single-post__footer">
-    <p>Last updated {{ post.updated_at[:10] if post.updated_at else post.created_at[:10] }}</p>
+    <p>{{ t('post_updated') }} {{ post.updated_at[:10] if post.updated_at else post.created_at[:10] }}</p>
   </footer>
 </article>
 {% endblock %}

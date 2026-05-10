@@ -2,6 +2,7 @@ import json
 import logging
 import random
 import re
+import sqlite3
 import threading
 from datetime import datetime
 from pathlib import Path
@@ -21,7 +22,12 @@ from daily_digest import (
     load_todos,
     send_email,
 )
+import mistune
+
 from db import close_db, get_db, init_db, row_to_dict
+from locales import detect_locale, t
+
+md = mistune.create_markdown()
 
 # --- Logging ---
 logging.basicConfig(
@@ -50,8 +56,14 @@ EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 # --- Template context ---
 
 @app.context_processor
-def inject_now():
-    return {"current_year": datetime.now().year}
+def inject_globals():
+    locale = detect_locale(request)
+    return {
+        "current_year": datetime.now().year,
+        "locale": locale,
+        "t": lambda key: t(key, locale),
+        "md": lambda text: md(text) if text else "",
+    }
 
 
 # --- Routes ---
