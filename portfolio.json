@@ -1,0 +1,29 @@
+{
+  "about": "I build things at the intersection of code, data, and design. Currently focused on crafting tools that make the web more useful — one line at a time.",
+  "projects": [
+    {
+      "title": "my-api",
+      "description": "A personal API server with daily brief aggregation, user management, and a brutalist blog frontend.",
+      "url": "https://github.com/watsonhe/my-api",
+      "tags": ["Python", "Flask", "SQLite"],
+      "year": "2026"
+    },
+    {
+      "title": "Data Pipeline Toolkit",
+      "description": "A collection of lightweight ETL scripts for ingesting, cleaning, and routing data between services.",
+      "tags": ["Python", "PostgreSQL", "Redis"],
+      "year": "2025"
+    },
+    {
+      "title": "CLI Workspace Manager",
+      "description": "Terminal-based productivity tool for managing projects, notes, and task lists with fuzzy search.",
+      "tags": ["Go", "Bubble Tea", "SQLite"],
+      "year": "2025"
+    }
+  ],
+  "currently": {
+    "learning": "Distributed systems & Rust",
+    "building": "A personal knowledge graph",
+    "reading": "The Elements of Computing Systems"
+  }
+}
