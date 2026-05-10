@@ -8,6 +8,34 @@
   <h1 class="hero__title">{{ t('hero_title') | safe }}</h1>
   <p class="hero__subtitle">{{ t('hero_subtitle') }}</p>
   <div class="hero__slash"></div>
+
+  <!-- Mountain silhouette -->
+  <div class="mountain-silhouette">
+    <svg viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="mtn-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#dc2626" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0.95"/>
+        </linearGradient>
+      </defs>
+      <!-- Far mountain range -->
+      <path d="M0,200 L80,90 L160,130 L240,60 L340,110 L420,50 L500,100 L580,40 L660,85 L740,30 L820,70 L900,45 L980,90 L1060,55 L1140,100 L1200,70 L1200,200 Z"
+            fill="url(#mtn-grad)" opacity="0.7"/>
+      <!-- Mid ridge -->
+      <path d="M0,200 L100,140 L200,170 L300,120 L420,155 L500,135 L620,160 L700,130 L820,150 L940,120 L1050,145 L1200,130 L1200,200 Z"
+            fill="#0d0d0d" opacity="0.85"/>
+      <!-- Foreground ridge -->
+      <path d="M0,200 L140,165 L280,185 L400,170 L530,190 L650,175 L780,195 L900,180 L1020,195 L1200,185 L1200,200 Z"
+            fill="#0a0a0a" opacity="0.98"/>
+      <!-- Stars / light dots -->
+      <circle cx="180" cy="45" r="1" fill="#dc2626" opacity="0.3"/>
+      <circle cx="320" cy="28" r="0.8" fill="#dc2626" opacity="0.2"/>
+      <circle cx="560" cy="42" r="1.2" fill="#dc2626" opacity="0.15"/>
+      <circle cx="750" cy="22" r="0.7" fill="#dc2626" opacity="0.25"/>
+      <circle cx="920" cy="50" r="1" fill="#dc2626" opacity="0.2"/>
+      <circle cx="1050" cy="35" r="0.8" fill="#dc2626" opacity="0.15"/>
+    </svg>
+  </div>
 </section>
 
 <!-- About snippet -->
@@ -17,6 +45,9 @@
   <p class="home-about__text">{{ portfolio.about }}</p>
 </section>
 {% endif %}
+
+<!-- Horizon divider -->
+<div class="section-horizon"></div>
 
 <!-- Projects -->
 {% if portfolio.projects %}
@@ -45,6 +76,9 @@
   </div>
 </section>
 {% endif %}
+
+<!-- Horizon divider -->
+<div class="section-horizon"></div>
 
 <!-- Currently -->
 {% if portfolio.currently %}
@@ -108,6 +142,14 @@
 
 <!-- Contact CTA -->
 <section class="home-cta" data-reveal>
+  <div class="footer-landscape">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 L30,45 L60,50 L90,35 L130,48 L170,30 L210,42 L250,28 L290,40 L330,25 L370,38 L400,32 L430,40 L470,28 L510,42 L550,35 L590,45 L630,30 L670,40 L700,35 L730,45 L770,32 L810,42 L850,38 L890,48 L930,35 L970,42 L1000,30 L1040,40 L1080,28 L1120,38 L1160,45 L1200,35 L1200,60 Z"
+            fill="#dc2626" opacity="0.3"/>
+      <path d="M0,60 L50,48 L100,55 L140,42 L190,52 L240,44 L290,54 L340,46 L390,55 L440,48 L500,56 L550,50 L600,58 L650,52 L700,60 L750,54 L800,60 L850,52 L900,58 L950,50 L1000,56 L1050,48 L1100,54 L1150,46 L1200,55 L1200,60 Z"
+            fill="#0d0d0d" opacity="0.9"/>
+    </svg>
+  </div>
   <div class="cta-rule"></div>
   <p class="cta-text">{{ t('cta_text') }} <a href="mailto:hema1998@163.com" class="cta-link">{{ t('cta_link') }}</a></p>
 </section>

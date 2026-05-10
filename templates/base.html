@@ -8,6 +8,13 @@
 </head>
 <body class="lang-{{ locale }}">
 
+  <!-- Atmospheric landscape backdrop -->
+  <div class="scene-bg">
+    <div class="scene-orb scene-orb--summit"></div>
+    <div class="scene-orb scene-orb--horizon"></div>
+    <div class="scene-orb scene-orb--mist"></div>
+  </div>
+
   <nav class="nav">
     <a href="{{ url_for('home') }}" class="nav__brand">{{ t('site_name') }}</a>
     <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">

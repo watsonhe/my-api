@@ -121,6 +121,115 @@ body::after {
 }
 
 /* ============================================================
+   ATMOSPHERIC LANDSCAPE BACKDROP
+   ============================================================ */
+.scene-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Moody atmospheric orbs — deep red horizon glow */
+.scene-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.10;
+}
+
+.scene-orb--horizon {
+  width: 800px; height: 300px;
+  background: radial-gradient(ellipse, #8b1a1a 0%, transparent 70%);
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: horizonPulse 12s ease-in-out infinite;
+}
+
+.scene-orb--summit {
+  width: 600px; height: 500px;
+  background: radial-gradient(ellipse, #1a0a0a 0%, #0d0000 50%, transparent 70%);
+  top: -15%;
+  right: -10%;
+  animation: summitDrift 20s ease-in-out infinite;
+}
+
+.scene-orb--mist {
+  width: 500px; height: 250px;
+  background: radial-gradient(ellipse, rgba(180,30,30,0.3) 0%, transparent 70%);
+  bottom: 20%;
+  left: -8%;
+  animation: mistMove 18s ease-in-out infinite;
+}
+
+@keyframes horizonPulse {
+  0%, 100% { opacity: 0.10; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.16; transform: translateX(-50%) scale(1.12); }
+}
+
+@keyframes summitDrift {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-30px, 15px); }
+  66% { transform: translate(20px, -10px); }
+}
+
+@keyframes mistMove {
+  0%, 100% { transform: translateX(0); opacity: 0.08; }
+  50% { transform: translateX(40px); opacity: 0.14; }
+}
+
+/* Mountain silhouette SVG container */
+.mountain-silhouette {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mountain-silhouette svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Section divider — geometric horizon line */
+.section-horizon {
+  position: relative;
+  height: 1px;
+  background: var(--border-subtle);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section-horizon::after {
+  content: '';
+  position: absolute;
+  top: -1px; left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--red-700), transparent);
+}
+
+/* Footer landscape — subtle tree line */
+.footer-landscape {
+  position: relative;
+  overflow: hidden;
+  height: 60px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.footer-landscape svg {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================================
    NAVIGATION
    ============================================================ */
 .nav {
@@ -421,8 +530,11 @@ body::after {
 .hero {
   max-width: var(--max-width);
   margin: calc(var(--nav-height) + 80px) auto 0;
-  padding: 0 36px 80px;
+  padding: 0 36px 140px;
   border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .hero__eyebrow {
